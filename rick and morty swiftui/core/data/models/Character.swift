@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character : Hashable {
+struct Character : Hashable, Identifiable {
     
     let id: Int
     let name: String
@@ -17,5 +17,4 @@ struct Character : Hashable {
     let url: String
     let image: String
     let status: String
-    let characterType: String
 }

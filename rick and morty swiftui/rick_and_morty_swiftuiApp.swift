@@ -25,8 +25,7 @@ struct rick_and_morty_swiftuiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RickAndMortyView()
         }
-        .modelContainer(sharedModelContainer)
     }
 }

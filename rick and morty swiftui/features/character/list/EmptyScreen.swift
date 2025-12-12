@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct EmptyScreen: View {
+    
+    let message: String
+    let refreshAction: () -> Void
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(message)
+                .font(.headline)
+                .foregroundColor(.primary)
+                .padding()
+            
+            Button(
+                "Refresh",
+                action: { refreshAction() }
+            )
+        }
+    
     }
 }
 
 #Preview {
-    EmptyScreen()
+    EmptyScreen(
+        message: "This is my story",
+        refreshAction: { print("Refreshing...") }
+    )
 }

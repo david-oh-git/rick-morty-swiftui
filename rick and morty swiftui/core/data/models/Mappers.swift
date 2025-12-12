@@ -20,8 +20,7 @@ extension NetworkCharacterResponse {
             gender: gender ?? "",
             url: url ?? "",
             image: image ?? "",
-            status: status ?? "",
-            characterType: characterType ?? ""
+            status: status ?? ""
         )
     }
     
@@ -34,8 +33,7 @@ extension NetworkCharacterResponse {
             gender: gender ?? "",
             url: url ?? "",
             image: image ?? "",
-            status: status ?? "",
-            characterType: characterType ?? ""
+            status: status ?? ""
         )
     }
     
@@ -54,8 +52,7 @@ extension Array<NetworkCharacter> {
                gender: $0.gender,
                url: $0.url,
                image: $0.image,
-               status: $0.status,
-               characterType: $0.characterType
+               status: $0.status
            )
        }
    }

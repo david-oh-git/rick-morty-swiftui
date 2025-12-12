@@ -10,6 +10,13 @@ import SwiftUI
 extension Character {
     
     var statusColour: Color {
-        self.status == "Alive" ? .green : .red
+        switch self.status {
+        case "Alive":
+            return .green
+        case "Dead":
+            return .red
+        default:
+            return .gray
+        }
     }
 }

@@ -17,7 +17,6 @@ struct NetworkCharacter: Codable {
     let url: String
     let image: String
     let status: String
-    let characterType: String
     
 }
 

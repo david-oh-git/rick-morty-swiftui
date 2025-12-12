@@ -11,4 +11,8 @@ struct NetworkResponse<T> {
     
     let data: T?
     let error: Error?
+    
+    var hasError: Bool {
+        return error != nil
+    }
 }

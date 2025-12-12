@@ -24,6 +24,11 @@ func safeApiCall<T : Codable>(urlString: String, type: T.Type) async -> (data:T?
     }
 }
 
+/// Make safe API calls easily
+/// - Parameters:
+///   - urlString: The URL to call
+///   - type: Network response type must extend Codable type
+/// - Returns: Network Response 
 func safeCall<T : Codable>(
     urlString: String,
     type: T.Type
@@ -33,6 +38,7 @@ func safeCall<T : Codable>(
         let (data,_) = try await URLSession.shared.data(from: url)
         return try NetworkResponse(data: JSONDecoder().decode(type, from: data), error: nil)
     } catch {
+        print("Error : \(error)")
         return NetworkResponse(data: nil , error: error)
     }
 }

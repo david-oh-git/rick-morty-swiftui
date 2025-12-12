@@ -8,8 +8,45 @@
 import SwiftUI
 
 struct CharacterListScreen: View {
+    
+    @ObservedObject
+    var viewModel: CharacterListViewModel
+    
+    init(
+        viewModel: CharacterListViewModel = CharacterListViewModel()
+    ) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        // Loading screen
+        if viewModel.state.isLoading {
+            LoadingScreen()
+        } else if viewModel.state.isEmpty {
+            EmptyScreen(
+                message: "Empty screen",
+                refreshAction: { viewModel.initFetchCharacters() }
+            )
+        } else {
+            ListContent(state: viewModel.state)
+        }
+        
+    }
+}
+
+struct ListContent: View {
+    let state: CharacterListState
+    
+    var body: some View {
+        List(state.characters) { character in
+        
+            NavigationLink {
+                CharacterDetailScreen(character.id)
+            } label: {
+                CharacterListItem(character: character)
+            }
+        }
     }
 }
 

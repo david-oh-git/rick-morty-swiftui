@@ -10,7 +10,8 @@ import SwiftUI
 struct CharacterDetailScreen: View {
     
     let id: Int
-    @ObservedObject var viewModel: CharacterDetailViewModel
+    @ObservedObject
+    var viewModel: CharacterDetailViewModel
     
     init(
         _ id: Int,
@@ -18,23 +19,23 @@ struct CharacterDetailScreen: View {
     ) {
         self.viewModel = viewModel
         self.id = id
-        viewModel.fetchCharcater(id: id)
+        viewModel.fetchCharacter(id: id)
     }
 
     var body: some View {
         // Loading screen
-        if viewModel.viewState.isLoading {
+        if viewModel.state.isLoading {
             LoadingScreen()
         }
-        if let errorMsg = viewModel.viewState.errorMessage {
+        if let errorMsg = viewModel.state.errorMessage {
             Text(errorMsg)
             Button {
-                viewModel.fetchCharcater(id: id)
+                viewModel.fetchCharacter(id: id)
             } label: {
                 Text("Retry")
             }
         }
-        if let character = viewModel.viewState.character {
+        if let character = viewModel.state.character {
             CharacterView(character: character)
         }
     }
@@ -85,14 +86,14 @@ struct CharacterView: View {
             
             Divider()
             
-            DetailsCard(charcater: character)
+            DetailsCard(character: character)
         } // END vstack
     }
 }
 
 struct DetailsCard: View {
     
-    let charcater: Character
+    let character: Character
     
     var body: some View {
         

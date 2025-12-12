@@ -12,7 +12,7 @@ class InfoTest : XCTestCase {
     var info: Info!
     
     override func setUpWithError() throws {
-        info = Info(count: <#T##Int#>, pages: <#T##Int#>, next: <#T##String?#>, prev: <#T##String?#>)
+        
     }
 
     override func tearDownWithError() throws {
